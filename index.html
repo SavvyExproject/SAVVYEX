@@ -1,780 +1,549 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5f9f8">
-<meta name="description" content="SAVVYEX Personal Finance">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" type="image/png" href="./icon.png">
-<link rel="apple-touch-icon" href="./icon.png">
-<title>SAVVYEX</title>
-
-<style>
-:root{
---bg:#f5f9f8;--card:#fff;--ink:#19332f;
---muted:#71827e;--teal:#159e91;
---soft:#e2f4f1;--line:#e5eeeb;
---navy:#1d3935;--red:#c75f5f
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-font-family:Inter,system-ui,sans-serif;padding-bottom:85px}
-header{padding:22px 19px 14px;display:flex;
-justify-content:space-between;align-items:center}
-.brand{font-size:11px;letter-spacing:2.5px;color:var(--teal);font-weight:900}
-.title{font-size:25px;font-weight:850;margin-top:7px}
-.sub{font-size:12px;color:var(--muted);margin-top:5px}
-.avatar{width:42px;height:42px;border-radius:50%;
-background:var(--soft);overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:contain}
-main{padding:0 17px;max-width:620px;margin:auto}
-.card{background:white;border:1px solid var(--line);
-border-radius:17px;padding:17px;margin-bottom:13px}
-.hero{background:var(--navy);color:white;padding:20px;
-border-radius:20px;margin:7px 0 20px}
-.eyebrow{font-size:10px;letter-spacing:1.2px;
-font-weight:800;color:#b6dad4}
-.heroVal{font-size:34px;font-weight:900;margin:12px 0}
-.stats{display:flex;justify-content:space-between;
-border-top:1px solid #45615d;padding-top:13px}
-.stats small{display:block;color:#c5dcd7;font-size:11px}
-.stats b{display:block;margin-top:5px;font-size:14px}
-.section{display:flex;justify-content:space-between;
-align-items:center;margin:20px 2px 10px}
-.section h2{font-size:16px;margin:0}
-.row{display:flex;align-items:center;gap:10px;
-padding:12px 0;border-top:1px solid var(--line)}
-.row:first-child{border-top:0}
-.rowmain{flex:1;min-width:0}
-.item{font-size:13px;font-weight:750}
-.meta{font-size:10px;color:var(--muted);margin-top:4px}
-.amt{font-size:12px;font-weight:850}
-.positive{color:var(--teal)}
-.negative{color:var(--red)}
-input,select{width:100%;padding:13px;
-border:1px solid var(--line);border-radius:11px;
-background:#f8fbfa;color:var(--ink);
-font-size:14px;margin:6px 0;outline:none}
-button{cursor:pointer;font-family:inherit}
-.primary{width:100%;border:0;border-radius:11px;
-padding:13px;background:var(--teal);
-color:white;font-weight:850;margin-top:8px}
-.secondary{width:100%;border:0;border-radius:11px;
-padding:12px;background:var(--soft);
-color:var(--teal);font-weight:800;margin-top:8px}
-.danger{background:#c75f5f;color:white}
-.pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.pill{border:1px solid var(--line);background:#f7faf9;
-padding:8px 10px;border-radius:20px;font-size:11px;color:var(--muted)}
-.pill.active{background:var(--soft);color:var(--teal)}
-.progress{height:7px;background:#edf2f0;
-border-radius:9px;overflow:hidden;margin:12px 0}
-.fill{height:100%;background:var(--teal)}
-.nav{position:fixed;bottom:0;left:0;right:0;height:72px;
-display:flex;justify-content:space-around;
-background:white;border-top:1px solid var(--line);z-index:4}
-.nav button{border:0;background:none;display:flex;
-flex-direction:column;align-items:center;
-justify-content:center;gap:4px;color:#8c9b97;
-font-size:9px;flex:1}
-.nav button.active{color:var(--teal)}
-.ico{font-size:19px}
-.fab{position:fixed;right:18px;bottom:88px;
-border:0;background:var(--teal);color:white;
-border-radius:25px;padding:12px 16px;z-index:3}
-.notice{background:var(--soft);padding:12px;
-border-radius:12px;font-size:11px;line-height:1.5;margin:10px 0}
-.disclaimer{text-align:center;background:#eef4f2;
-color:var(--muted);padding:12px;border-radius:12px;
-font-size:10px;line-height:1.5;margin:12px 0}
-.empty{text-align:center;padding:20px;color:var(--muted);font-size:12px}
-.hidden{display:none!important}
-.center{text-align:center}
-.big{font-size:27px;font-weight:900}
-.auth{max-width:440px;margin:30px auto}
-.auth h2{font-size:23px}
-.auth p{font-size:12px;color:var(--muted);line-height:1.6}
-.status{font-size:12px;margin:10px 0;color:var(--teal);line-height:1.5}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b8f78">
+  <title>SAVVYEX</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.png">
+  <style>
+    :root{--green:#078b73;--green2:#dff5ef;--ink:#142a27;--muted:#71817d;--bg:#f4f8f7;--white:#fff;--line:#e3ece9;--red:#c94e56}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    button,input,select{font:inherit}
+    button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;background:var(--green);color:white;font-weight:700}
+    button.secondary{background:var(--green2);color:var(--green)}
+    button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+    .wrap{max-width:760px;margin:auto;padding:22px 16px 48px}
+    .brand{display:flex;align-items:center;gap:10px;margin:8px 0 24px}
+    .brand img{width:42px;height:42px;object-fit:contain}
+    .brand strong{font-size:21px;letter-spacing:1.5px}
+    .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:2px}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #163b3010}
+    h1{font-size:25px;margin:0 0 6px}
+    h2{font-size:18px;margin:0 0 14px}
+    p{color:var(--muted);line-height:1.5}
+    .muted{color:var(--muted)}
+    .small{font-size:12px}
+    label{display:block;font-size:13px;font-weight:650;margin:12px 0 6px}
+    input,select{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);outline-color:var(--green)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 12px}
+    .tabs button{white-space:nowrap}
+    .tabs button.active{background:var(--ink)}
+    .hidden{display:none!important}
+    .stat{font-size:26px;font-weight:800;margin-top:4px}
+    .positive{color:var(--green)}
+    .negative{color:var(--red)}
+    .item{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+    .item:last-child{border:0}
+    .item b{display:block}
+    .item small{color:var(--muted)}
+    #notice{padding:12px;border-radius:12px;background:#fff4df;color:#76551c;margin:12px 0;display:none;white-space:pre-wrap}
+    .error{background:#fff0f0!important;color:#9d3038!important}
+    .empty{padding:16px;text-align:center;color:var(--muted)}
+    .topline{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .topline button{padding:9px 12px}
+    .foot{font-size:11px;text-align:center;color:var(--muted);margin-top:24px}
+    @media(max-width:480px){.row{grid-template-columns:1fr}.card{padding:16px}.wrap{padding:16px 13px 36px}}
+  </style>
 </head>
-
 <body>
+<div class="wrap">
+  <header class="brand">
+    <img src="./icon.png" alt="SAVVYEX" onerror="this.style.display='none'">
+    <div><strong>SAVVYEX</strong><small>SMARTER FINANCIAL HABITS</small></div>
+  </header>
+  <div id="notice" role="status"></div>
 
-<header id="appHeader" class="hidden">
-<div>
-<div class="brand">SAVVYEX</div>
-<div class="title" id="headTitle">Τα οικονομικά σου.</div>
-<div class="sub" id="headSub">Μια πιο καθαρή εικόνα, κάθε μέρα.</div>
+  <section id="authView" class="card">
+    <h1>Καλώς ήρθες στη SAVVYEX</h1>
+    <p>Οργάνωσε τα οικονομικά σου σε ένα απλό και ασφαλές περιβάλλον.</p>
+    <div id="authMessage" class="small muted" aria-live="polite"></div>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="email" placeholder="name@example.com">
+    <label for="password">Κωδικός πρόσβασης</label>
+    <input id="password" type="password" autocomplete="current-password" placeholder="Τουλάχιστον 8 χαρακτήρες">
+    <div class="actions">
+      <button id="signInBtn">Σύνδεση</button>
+      <button id="signUpBtn" class="secondary">Δημιουργία λογαριασμού</button>
+    </div>
+    <button id="resetBtn" class="ghost" style="margin-top:10px">Ξέχασα τον κωδικό</button>
+  </section>
+
+  <main id="appView" class="hidden">
+    <div class="topline">
+      <div><h1>Το ταμπλό σου</h1><div id="userEmail" class="small muted"></div></div>
+      <button id="signOutBtn" class="ghost">Αποσύνδεση</button>
+    </div>
+    <nav class="tabs" aria-label="Μενού">
+      <button class="active" data-tab="dashboard">Αρχική</button>
+      <button data-tab="transactions">Κινήσεις</button>
+      <button data-tab="goals">Στόχοι</button>
+      <button data-tab="subscriptions">Συνδρομές</button>
+      <button data-tab="assistant">AI βοηθός</button>
+    </nav>
+
+    <section id="tab-dashboard">
+      <div class="row">
+        <div class="card"><div class="muted small">Έσοδα</div><div id="incomeTotal" class="stat positive">€0.00</div></div>
+        <div class="card"><div class="muted small">Έξοδα</div><div id="expenseTotal" class="stat negative">€0.00</div></div>
+      </div>
+      <div class="card"><div class="muted small">Υπόλοιπο κινήσεων</div><div id="balanceTotal" class="stat">€0.00</div><p class="small">Υπολογίζεται από τις κινήσεις που καταχωρίζεις.</p></div>
+      <div class="card"><h2>Πρόσφατες κινήσεις</h2><div id="recentList" class="empty">Δεν υπάρχουν ακόμη κινήσεις.</div></div>
+    </section>
+
+    <section id="tab-transactions" class="hidden">
+      <div class="card">
+        <h2>Νέα κίνηση</h2>
+        <label for="txTitle">Περιγραφή</label>
+        <input id="txTitle" maxlength="90" placeholder="π.χ. Supermarket">
+        <div class="row">
+          <div><label for="txType">Τύπος</label><select id="txType"><option value="expense">Έξοδο</option><option value="income">Έσοδο</option></select></div>
+          <div><label for="txAmount">Ποσό (€)</label><input id="txAmount" type="number" min="0.01" step="0.01" placeholder="0.00"></div>
+        </div>
+        <div class="row">
+          <div><label for="txCategory">Κατηγορία</label><select id="txCategory"><option>Γενικά</option><option>Σπίτι</option><option>Τρόφιμα</option><option>Μετακινήσεις</option><option>Λογαριασμοί</option><option>Υγεία</option><option>Ψυχαγωγία</option><option>Μισθός</option><option>Άλλο</option></select></div>
+          <div><label for="txDate">Ημερομηνία</label><input id="txDate" type="date"></div>
+        </div>
+        <div class="actions"><button id="addTxBtn">Αποθήκευση κίνησης</button></div>
+      </div>
+      <div class="card"><h2>Όλες οι κινήσεις</h2><div id="txList" class="empty">Φόρτωση…</div></div>
+    </section>
+
+    <section id="tab-goals" class="hidden">
+      <div class="card"><h2>Νέος στόχος αποταμίευσης</h2>
+        <label for="goalTitle">Όνομα στόχου</label><input id="goalTitle" maxlength="90" placeholder="π.χ. Ταξίδι">
+        <div class="row">
+          <div><label for="goalTarget">Στόχος (€)</label><input id="goalTarget" type="number" min="0.01" step="0.01"></div>
+          <div><label for="goalSaved">Έχω αποταμιεύσει (€)</label><input id="goalSaved" type="number" min="0" step="0.01" value="0"></div>
+        </div>
+        <label for="goalDate">Ημερομηνία στόχου (προαιρετικά)</label><input id="goalDate" type="date">
+        <div class="actions"><button id="addGoalBtn">Αποθήκευση στόχου</button></div>
+      </div>
+      <div class="card"><h2>Οι στόχοι μου</h2><div id="goalList" class="empty">Φόρτωση…</div></div>
+    </section>
+
+    <section id="tab-subscriptions" class="hidden">
+      <div class="card"><h2>Νέα συνδρομή</h2>
+        <label for="subTitle">Υπηρεσία</label><input id="subTitle" maxlength="90" placeholder="π.χ. Streaming">
+        <div class="row">
+          <div><label for="subAmount">Ποσό (€)</label><input id="subAmount" type="number" min="0.01" step="0.01"></div>
+          <div><label for="subCycle">Χρέωση</label><select id="subCycle"><option value="monthly">Μηνιαία</option><option value="yearly">Ετήσια</option><option value="weekly">Εβδομαδιαία</option></select></div>
+        </div>
+        <label for="subDate">Επόμενη πληρωμή</label><input id="subDate" type="date">
+        <div class="actions"><button id="addSubBtn">Αποθήκευση συνδρομής</button></div>
+      </div>
+      <div class="card"><h2>Οι συνδρομές μου</h2><div id="subList" class="empty">Φόρτωση…</div></div>
+    </section>
+
+    <section id="tab-assistant">
+      <div class="card"><h2>AI οικονομικός βοηθός</h2><p>Η ενότητα είναι σε δοκιμαστική μορφή. Δεν παρέχει εξατομικευμένες οικονομικές ή επενδυτικές συμβουλές.</p><p>Κατέγραψε έσοδα και έξοδα για να έχεις καθαρότερη εικόνα των οικονομικών σου.</p></div>
+    </section>
+  </main>
+  <div class="foot">SAVVYEX · Η οικονομική σου εικόνα, πιο απλά.</div>
 </div>
-<div class="avatar"><img src="./icon.png" alt="SAVVYEX"></div>
-</header>
-
-<main id="app"></main>
-
-<nav class="nav hidden" id="nav">
-<button data-tab="home" class="active"><span class="ico">⌂</span>Αρχική</button>
-<button data-tab="moves"><span class="ico">↕</span>Κινήσεις</button>
-<button data-tab="subs"><span class="ico">▤</span>Συνδρομές</button>
-<button data-tab="goals"><span class="ico">◎</span>Στόχοι</button>
-<button data-tab="account"><span class="ico">◯</span>Προφίλ</button>
-</nav>
-
-<button class="fab hidden" id="aiFab">✦ AI</button>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-/* =================================
-   SAVVYEX SUPABASE CONFIGURATION
-================================= */
-
-const SUPABASE_URL =
-'https://hojhpujeyudlzjchuvev.supabase.co';
-
-const SUPABASE_KEY =
-'sb_publishable_7NNstwDd3coLglr3Tu5eJQ_Mtk_33oc';
-
-const db = window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-/* =================================
-   APPLICATION STATE
-================================= */
-
-let user = null;
-let tab = 'home';
-let kind = 'expense';
-let category = 'Τρόφιμα';
-let loading = false;
-
-let data = {
-income:[],
-expenses:[],
-subscriptions:[],
-goals:[]
-};
-
-let chatMessages = [
-{text:'Γεια σου! Είμαι ο SAVVYEX Assistant. Πώς μπορώ να σε βοηθήσω;'}
-];
-
-const $ = id => document.getElementById(id);
-
-const money = n =>
-new Intl.NumberFormat('el-GR',{
-style:'currency',currency:'EUR'
-}).format(Number(n || 0));
-
-const sum = arr =>
-arr.reduce((s,x)=>s+Number(x.amount || 0),0);
-
-const esc = s =>
-String(s).replace(/[&<>"']/g,c=>({
-'&':'&amp;','<':'&lt;','>':'&gt;',
-'"':'&quot;',"'":'&#39;'
-}[c]));
-
-function header(title,sub){
-$('headTitle').textContent=title;
-$('headSub').textContent=sub;
-}
-
-function message(text){
-$('status') && ($('status').textContent=text);
-alert(text);
-}
-
-/* =================================
-   AUTHENTICATION
-================================= */
-
-function showAuth(){
-$('appHeader').classList.add('hidden');
-$('nav').classList.add('hidden');
-$('aiFab').classList.add('hidden');
-
-$('app').innerHTML=`
-<div class="auth">
-<div class="center">
-<div class="avatar" style="width:75px;height:75px;margin:auto">
-<img src="./icon.png" alt="SAVVYEX">
-</div>
-<div class="brand" style="margin-top:15px">SAVVYEX</div>
-<h2>Τα οικονομικά σου, πιο έξυπνα.</h2>
-<p>Δημιούργησε τον προσωπικό σου λογαριασμό.</p>
-</div>
-
-${card(`
-<div class="pills">
-<button class="pill active" id="loginTab" onclick="authMode('login')">Σύνδεση</button>
-<button class="pill" id="signupTab" onclick="authMode('signup')">Εγγραφή</button>
-</div>
-
-<div id="authFields">
-<input id="authEmail" type="email" placeholder="Email" autocomplete="email">
-<input id="authPassword" type="password" placeholder="Κωδικός πρόσβασης" autocomplete="current-password">
-</div>
-
-<button class="primary" id="authButton" onclick="authenticate()">Σύνδεση</button>
-<button class="secondary" onclick="forgotPassword()">Ξέχασα τον κωδικό μου</button>
-<div class="status" id="status"></div>
-`)}
-
-<div class="disclaimer">
-Τα οικονομικά σου δεδομένα αποθηκεύονται στον προσωπικό σου λογαριασμό.
-</div>
-</div>`;
-
-window.authMode('login');
-}
-
-function card(content){
-return `<section class="card">${content}</section>`;
-}
-
-window.authMode = function(mode){
-const signup = mode==='signup';
-
-$('loginTab').classList.toggle('active',!signup);
-$('signupTab').classList.toggle('active',signup);
-
-$('authButton').textContent =
-signup ? 'Δημιουργία λογαριασμού' : 'Σύνδεση';
-
-$('authButton').dataset.mode=mode;
-
-$('authPassword').autocomplete =
-signup?'new-password':'current-password';
-};
-
-async function authenticate(){
-const email=$('authEmail').value.trim();
-const password=$('authPassword').value;
-const mode=$('authButton').dataset.mode;
-
-if(!email || !password){
-alert('Συμπλήρωσε email και κωδικό.');
-return;
-}
-
-if(password.length<8){
-alert('Ο κωδικός πρέπει να έχει τουλάχιστον 8 χαρακτήρες.');
-return;
-}
-
-$('authButton').disabled=true;
-$('authButton').textContent='Παρακαλώ περίμενε...';
-
-try{
-let result;
-
-if(mode==='signup'){
-result=await db.auth.signUp({
-email,password,
-options:{
-emailRedirectTo:
-'https://savvyexproject.github.io/SAVVYEX/'
-}
-});
-}else{
-result=await db.auth.signInWithPassword({
-email,password
-});
-}
-
-if(result.error) throw result.error;
-
-if(mode==='signup' && !result.data.session){
-alert('Η εγγραφή έγινε! Έλεγξε το email σου για επιβεβαίωση και μετά συνδέσου.');
-authMode('login');
-}else{
-await loadUserData();
-}
-}catch(e){
-alert('Σφάλμα: '+e.message);
-}finally{
-$('authButton').disabled=false;
-$('authButton').textContent=
-$('authButton').dataset.mode==='signup'
-?'Δημιουργία λογαριασμού':'Σύνδεση';
-}
-}
-
-async function forgotPassword(){
-const email=$('authEmail').value.trim();
-
-if(!email){
-alert('Συμπλήρωσε πρώτα το email σου.');
-return;
-}
-
-const {error}=await db.auth.resetPasswordForEmail(email,{
-redirectTo:'https://savvyexproject.github.io/SAVVYEX/'
-});
-
-if(error) alert(error.message);
-else alert('Σου στείλαμε email για επαναφορά κωδικού.');
-}
-
-async function logout(){
-await db.auth.signOut();
-user=null;
-data={income:[],expenses:[],subscriptions:[],goals:[]};
-showAuth();
-}
-
-/* =================================
-   CLOUD DATABASE
-================================= */
-
-async function loadUserData(){
-if(!user) return;
-
-loading=true;
-
-try{
-const [transactions,subs,goals]=await Promise.all([
-
-db.from('transactions')
-.select('*')
-.eq('user_id',user.id),
-
-db.from('subscriptions')
-.select('*')
-.eq('user_id',user.id),
-
-db.from('goals')
-.select('*')
-.eq('user_id',user.id)
-
-]);
-
-if(transactions.error) throw transactions.error;
-if(subs.error) throw subs.error;
-if(goals.error) throw goals.error;
-
-data.income=transactions.data
-.filter(x=>x.type==='income')
-.map(x=>({
-id:x.id,title:x.title,amount:Number(x.amount),
-category:x.category,date:x.transaction_date
-}));
-
-data.expenses=transactions.data
-.filter(x=>x.type==='expense')
-.map(x=>({
-id:x.id,title:x.title,amount:Number(x.amount),
-category:x.category,date:x.transaction_date
-}));
-
-data.subscriptions=subs.data.map(x=>({
-id:x.id,title:x.title,amount:Number(x.amount),
-cycle:x.billing_cycle==='yearly'?'Ετήσια':'Μηνιαία'
-}));
-
-data.goals=goals.data.map(x=>({
-id:x.id,title:x.title,
-target:Number(x.target_amount),
-saved:Number(x.saved_amount)
-}));
-
-render();
-}catch(e){
-alert('Δεν ήταν δυνατή η φόρτωση των δεδομένων: '+e.message);
-}finally{
-loading=false;
-}
-}
-
-async function saveTransaction(item,type){
-const {error}=await db.from('transactions').upsert({
-id:item.id,
-user_id:user.id,
-type,
-title:item.title,
-category:item.category,
-amount:item.amount,
-transaction_date:new Date().toISOString().slice(0,10)
-});
-
-if(error) throw error;
-}
-
-async function saveSubscription(item){
-const {error}=await db.from('subscriptions').upsert({
-id:item.id,
-user_id:user.id,
-title:item.title,
-amount:item.amount,
-billing_cycle:item.cycle==='Ετήσια'?'yearly':'monthly'
-});
-
-if(error) throw error;
-}
-
-async function saveGoal(item){
-const {error}=await db.from('goals').upsert({
-id:item.id,
-user_id:user.id,
-title:item.title,
-target_amount:item.target,
-saved_amount:item.saved
-});
-
-if(error) throw error;
-}
-
-/* =================================
-   APPLICATION DISPLAY
-================================= */
-
-function render(){
-if(!user) return;
-
-$('appHeader').classList.remove('hidden');
-$('nav').classList.remove('hidden');
-$('aiFab').classList.toggle('hidden',tab==='ai');
-
-$('nav').querySelectorAll('button').forEach(b=>
-b.classList.toggle('active',b.dataset.tab===tab)
-);
-
-const inc=sum(data.income);
-const exp=sum(data.expenses);
-const subs=sum(data.subscriptions);
-
-if(tab==='home'){
-header('Τα οικονομικά σου.','Μια πιο καθαρή εικόνα, κάθε μέρα.');
-
-$('app').innerHTML=`
-<div class="hero">
-<div class="eyebrow">ΠΡΟΣΩΠΙΚΟ ΥΠΟΛΟΙΠΟ</div>
-<div class="heroVal">${money(inc-exp)}</div>
-<div class="stats">
-<div><small>Έσοδα</small><b>${money(inc)}</b></div>
-<div><small>Έξοδα</small><b>${money(exp)}</b></div>
-</div>
-</div>
-
-${card(`
-<div class="item">Καλώς ήρθες στη SAVVYEX</div>
-<div class="meta">${esc(user.email)}</div>
-`)}
-
-<div class="section"><h2>Πρόσφατες κινήσεις</h2></div>
-
-${card([
-...data.income.map(x=>({...x,type:'income'})),
-...data.expenses.map(x=>({...x,type:'expense'}))
-].slice(0,6).map(x=>row(x,x.type)).join('')
-||'<div class="empty">Δεν υπάρχουν κινήσεις ακόμη.</div>')}
-
-<div class="section"><h2>Συνδρομές</h2></div>
-${card(`
-<div class="item">Συνολικό ποσό</div>
-<div class="big">${money(subs)}</div>
-<div class="meta">${data.subscriptions.length} συνδρομές</div>
-`)}
-<div class="disclaimer">Τα στοιχεία σου αποθηκεύονται στον προσωπικό σου λογαριασμό SAVVYEX.</div>
-`;
-
-}else if(tab==='moves'){
-
-header('Κινήσεις','Τα προσωπικά σου έσοδα και έξοδα.');
-
-$('app').innerHTML=`
-${card(`
-<div class="eyebrow">ΝΕΑ ΚΑΤΑΧΩΡΗΣΗ</div>
-<div class="pills">
-<button class="pill active" onclick="setKind('expense')">Έξοδο</button>
-<button class="pill" onclick="setKind('income')">Έσοδο</button>
-</div>
-<input id="moveTitle" placeholder="Περιγραφή">
-<input id="moveAmount" inputmode="decimal" placeholder="Ποσό (€)">
-<div class="pills">
-${(kind==='income'
-?['Εργασία','Επιχείρηση','Επένδυση','Άλλο']
-:['Τρόφιμα','Λογαριασμοί','Μεταφορές','Καθημερινά','Υγεία','Άλλο']
-).map(c=>`<button class="pill ${category===c?'active':''}" onclick="setCat('${c}')">${c}</button>`).join('')}
-</div>
-<button class="primary" onclick="addMove()">Αποθήκευση</button>
-`)}
-
-<div class="section"><h2>Έξοδα</h2></div>
-${card(data.expenses.map(x=>row(x,'expense')).join('')||'<div class="empty">Δεν υπάρχουν έξοδα.</div>')}
-
-<div class="section"><h2>Έσοδα</h2></div>
-${card(data.income.map(x=>row(x,'income')).join('')||'<div class="empty">Δεν υπάρχουν έσοδα.</div>')}
-`;
-
-}else if(tab==='subs'){
-
-header('Συνδρομές','Παρακολούθησε τις επαναλαμβανόμενες χρεώσεις.');
-
-$('app').innerHTML=`
-<div class="hero">
-<div class="eyebrow">ΣΥΝΟΛΟ ΣΥΝΔΡΟΜΩΝ</div>
-<div class="heroVal">${money(subs)}</div>
-</div>
-
-${card(`
-<div class="eyebrow">ΝΕΑ ΣΥΝΔΡΟΜΗ</div>
-<input id="subTitle" placeholder="Όνομα συνδρομής">
-<input id="subAmount" inputmode="decimal" placeholder="Ποσό (€)">
-<select id="subCycle">
-<option>Μηνιαία</option>
-<option>Ετήσια</option>
-</select>
-<button class="primary" onclick="addSub()">Προσθήκη</button>
-`)}
-
-${card(data.subscriptions.map(x=>row({
-...x,category:x.cycle
-},'expense')).join('')||'<div class="empty">Δεν υπάρχουν συνδρομές.</div>')}
-`;
-
-}else if(tab==='goals'){
-
-header('Στόχοι','Οργάνωσε την αποταμίευσή σου.');
-
-$('app').innerHTML=`
-${card(`
-<div class="eyebrow">ΝΕΟΣ ΣΤΟΧΟΣ</div>
-<input id="goalTitle" placeholder="Όνομα στόχου">
-<input id="goalTarget" inputmode="decimal" placeholder="Ποσό στόχου (€)">
-<button class="primary" onclick="addGoal()">Δημιουργία στόχου</button>
-`)}
-
-${data.goals.map(g=>card(`
-<div class="item">${esc(g.title)}</div>
-<div class="big">${Math.round(g.saved/g.target*100)}%</div>
-<div class="progress">
-<div class="fill" style="width:${Math.min(100,g.saved/g.target*100)}%"></div>
-</div>
-<div class="meta">${money(g.saved)} από ${money(g.target)}</div>
-<button class="secondary" onclick="progressGoal('${g.id}')">＋ Προσθήκη 20 €</button>
-`)).join('')||'<div class="empty">Δεν υπάρχουν στόχοι ακόμη.</div>'}
-`;
-
-}else if(tab==='ai'){
-
-header('AI Assistant','Ο προσωπικός σου βοηθός.');
-
-$('app').innerHTML=`
-<div class="notice">
-Ο AI Assistant είναι δοκιμαστική λειτουργία. Δεν είναι ακόμη συνδεδεμένος με πραγματική υπηρεσία AI.
-</div>
-${card(chatMessages.map(m=>
-`<div class="row"><div class="item">${esc(m.text)}</div></div>`
-).join(''))}
-${card(`
-<input id="chatInput" placeholder="Γράψε την ερώτησή σου">
-<button class="primary" onclick="sendChat()">Αποστολή</button>
-`)}
-`;
-
-}else{
-
-header('Το προφίλ σου','Οι ρυθμίσεις του λογαριασμού σου.');
-
-$('app').innerHTML=`
-${card(`
-<div class="center">
-<div class="avatar" style="margin:auto;width:60px;height:60px">
-<img src="./icon.png" alt="SAVVYEX">
-</div>
-<h3>SAVVYEX</h3>
-<div class="meta">${esc(user.email)}</div>
-</div>
-`)}
-
-${card(`
-<div class="item">Προσωπικός λογαριασμός</div>
-<div class="meta">Τα δεδομένα σου αποθηκεύονται online και συνδέονται με τον λογαριασμό σου.</div>
-<button class="primary danger" onclick="logout()">Αποσύνδεση</button>
-`)}
-
-<div class="disclaimer">
-Μην καταχωρείς τραπεζικούς κωδικούς ή στοιχεία καρτών.
-</div>
-`;
-}
-}
-
-function row(x,type){
-return `
-<div class="row">
-<div class="rowmain">
-<div class="item">${esc(x.title)}</div>
-<div class="meta">${esc(x.category||x.cycle||'')}</div>
-</div>
-<div class="amt ${type==='income'?'positive':'negative'}">
-${type==='income'?'+':'−'}${money(x.amount)}
-</div>
-</div>`;
-}
-
-/* =================================
-   DATA OPERATIONS
-================================= */
-
-function val(id){
-return $(id)?.value?.trim()||'';
-}
-
-function num(id){
-return Number(val(id).replace(',','.'));
-}
-
-function valid(title,amount){
-if(!title||!Number.isFinite(amount)||amount<=0){
-alert('Συμπλήρωσε περιγραφή και έγκυρο ποσό.');
-return false;
-}
-return true;
-}
-
-window.setKind=function(k){
-kind=k;
-category=k==='income'?'Εργασία':'Τρόφιμα';
-render();
-};
-
-window.setCat=function(c){
-category=c;
-render();
-};
-
-window.addMove=async function(){
-const title=val('moveTitle');
-const amount=num('moveAmount');
-if(!valid(title,amount))return;
-
-const item={
-id:crypto.randomUUID(),
-title,amount,category
-};
-
-try{
-await saveTransaction(item,kind);
-data[kind==='income'?'income':'expenses'].unshift(item);
-render();
-}catch(e){alert('Δεν αποθηκεύτηκε: '+e.message)}
-};
-
-window.addSub=async function(){
-const title=val('subTitle');
-const amount=num('subAmount');
-if(!valid(title,amount))return;
-
-const item={
-id:crypto.randomUUID(),title,amount,
-cycle:$('subCycle').value
-};
-
-try{
-await saveSubscription(item);
-data.subscriptions.unshift(item);
-render();
-}catch(e){alert('Δεν αποθηκεύτηκε: '+e.message)}
-};
-
-window.addGoal=async function(){
-const title=val('goalTitle');
-const target=num('goalTarget');
-if(!valid(title,target))return;
-
-const item={
-id:crypto.randomUUID(),title,
-target,saved:0
-};
-
-try{
-await saveGoal(item);
-data.goals.unshift(item);
-render();
-}catch(e){alert('Δεν αποθηκεύτηκε: '+e.message)}
-};
-
-window.progressGoal=async function(id){
-const g=data.goals.find(x=>x.id===id);
-if(!g)return;
-
-const previous=g.saved;
-g.saved=Math.min(g.target,g.saved+20);
-
-try{
-await saveGoal(g);
-render();
-}catch(e){
-g.saved=previous;
-alert('Δεν αποθηκεύτηκε: '+e.message);
-}
-};
-
-window.sendChat=function(){
-const q=val('chatInput');
-if(!q)return;
-
-chatMessages.push({
-text:'Αυτή είναι η δοκιμαστική έκδοση του SAVVYEX Assistant. Η πραγματική λειτουργία AI θα προστεθεί σε επόμενο στάδιο.'
-});
-render();
-};
-
-/* =================================
-   NAVIGATION
-================================= */
-
-function go(t){
-tab=t;
-render();
-window.scrollTo(0,0);
-}
-
-$('nav').addEventListener('click',e=>{
-const b=e.target.closest('button[data-tab]');
-if(b)go(b.dataset.tab);
-});
-
-$('aiFab').onclick=()=>go('ai');
-
-/* =================================
-   AUTH SESSION INITIALIZATION
-================================= */
-
-async function initialize(){
-try{
-const {data:sessionData,error}=await db.auth.getSession();
-if(error)throw error;
-
-if(sessionData.session){
-user=sessionData.session.user;
-await loadUserData();
-}else{
-showAuth();
-}
-
-}catch(e){
-$('app').innerHTML=`
-<div class="card">
-<h3>Πρόβλημα σύνδεσης</h3>
-<p>${esc(e.message)}</p>
-<button class="primary" onclick="location.reload()">Δοκιμή ξανά</button>
-</div>`;
-}
-}
-
-db.auth.onAuthStateChange((event,session)=>{
-if(event==='SIGNED_OUT'){
-user=null;
-data={income:[],expenses:[],subscriptions:[],goals:[]};
-showAuth();
-}
-});
-
-if('serviceWorker' 
+(() => {
+  "use strict";
+
+  const SUPABASE_URL = "https://hojhpujeyudlzjchuvev.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_7NNstwDd3coLglr3Tu5eJQ_Mtk_33oc";
+
+  const $ = id => document.getElementById(id);
+
+  const showNotice = (message, isError=false) => {
+    const el=$("notice");
+    el.textContent=message;
+    el.className=isError?"error":"";
+    el.style.display="block";
+  };
+
+  const hideNotice = () => $("notice").style.display="none";
+
+  const euro = n => new Intl.NumberFormat("el-GR",{
+    style:"currency",currency:"EUR"
+  }).format(Number(n)||0);
+
+  const today = new Date().toLocaleDateString("en-CA");
+  $("txDate").value=today;
+  $("subDate").value=today;
+
+  if (!window.supabase || !window.supabase.createClient) {
+    showNotice("Δεν φορτώθηκε η βιβλιοθήκη σύνδεσης. Έλεγξε τη σύνδεση στο διαδίκτυο και ανανέωσε τη σελίδα.", true);
+    return;
+  }
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  let currentUser=null;
+  let transactions=[];
+  let goals=[];
+  let subscriptions=[];
+
+  function setAuthMessage(msg){
+    $("authMessage").textContent=msg;
+  }
+
+  function showSignedIn(user){
+    currentUser=user;
+    $("authView").classList.add("hidden");
+    $("appView").classList.remove("hidden");
+    $("userEmail").textContent=user.email||"";
+    loadAll();
+  }
+
+  function showSignedOut(){
+    currentUser=null;
+    $("appView").classList.add("hidden");
+    $("authView").classList.remove("hidden");
+  }
+
+  async function signUp(){
+    hideNotice();
+    const email=$("email").value.trim();
+    const password=$("password").value;
+
+    if(!email||password.length<8){
+      setAuthMessage("Συμπλήρωσε email και κωδικό τουλάχιστον 8 χαρακτήρων.");
+      return;
+    }
+
+    const {data,error}=await db.auth.signUp({
+      email,
+      password,
+      options:{
+        emailRedirectTo:location.origin+location.pathname
+      }
+    });
+
+    if(error){
+      setAuthMessage(error.message);
+      return;
+    }
+
+    setAuthMessage(
+      data.session
+      ?"Ο λογαριασμός δημιουργήθηκε."
+      :"Έλεγξε το email σου και πάτησε τον σύνδεσμο επιβεβαίωσης για να ενεργοποιήσεις τον λογαριασμό."
+    );
+  }
+
+  async function signIn(){
+    hideNotice();
+    const email=$("email").value.trim();
+    const password=$("password").value;
+
+    const {data,error}=await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if(error){
+      setAuthMessage(error.message);
+      return;
+    }
+
+    if(data.user)showSignedIn(data.user);
+  }
+
+  async function resetPassword(){
+    const email=$("email").value.trim();
+
+    if(!email){
+      setAuthMessage("Γράψε πρώτα το email σου.");
+      return;
+    }
+
+    const {error}=await db.auth.resetPasswordForEmail(email,{
+      redirectTo:location.origin+location.pathname
+    });
+
+    setAuthMessage(
+      error
+      ?error.message
+      :"Αν το email είναι καταχωρισμένο, θα λάβεις σύνδεσμο επαναφοράς."
+    );
+  }
+
+  async function signOut(){
+    await db.auth.signOut();
+    showSignedOut();
+  }
+
+  async function loadAll(){
+    if(!currentUser)return;
+
+    try{
+      const results=await Promise.all([
+        db.from("transactions").select("*").order("transaction_date",{ascending:false}),
+        db.from("goals").select("*").order("created_at",{ascending:false}),
+        db.from("subscriptions").select("*").order("created_at",{ascending:false})
+      ]);
+
+      for(const r of results){
+        if(r.error)throw r.error;
+      }
+
+      transactions=results[0].data||[];
+      goals=results[1].data||[];
+      subscriptions=results[2].data||[];
+
+      renderAll();
+      hideNotice();
+
+    }catch(e){
+      showNotice("Δεν ήταν δυνατή η φόρτωση των δεδομένων: "+e.message,true);
+    }
+  }
+
+  function safeText(value){
+    return String(value??"").replace(/[&<>"']/g,c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[c]));
+  }
+
+  function transactionHTML(t){
+    const sign=t.type==="income"?"+":"−";
+    const cls=t.type==="income"?"positive":"negative";
+
+    return `<div class="item">
+      <div>
+        <b>${safeText(t.title)}</b>
+        <small>${safeText(t.category||"Γενικά")} · ${safeText(t.transaction_date||"")}</small>
+      </div>
+      <strong class="${cls}">${sign}${euro(t.amount)}</strong>
+    </div>`;
+  }
+
+  function renderAll(){
+    const income=transactions
+      .filter(t=>t.type==="income")
+      .reduce((s,t)=>s+Number(t.amount),0);
+
+    const expense=transactions
+      .filter(t=>t.type==="expense")
+      .reduce((s,t)=>s+Number(t.amount),0);
+
+    $("incomeTotal").textContent=euro(income);
+    $("expenseTotal").textContent=euro(expense);
+    $("balanceTotal").textContent=euro(income-expense);
+
+    const recent=transactions.slice(0,5).map(transactionHTML).join("");
+
+    $("recentList").innerHTML=recent||
+      '<div class="empty">Δεν υπάρχουν ακόμη κινήσεις.</div>';
+
+    $("txList").innerHTML=transactions.map(t=>
+      transactionHTML(t)+
+      `<div style="text-align:right;margin-top:-5px">
+        <button class="ghost small" data-delete-tx="${t.id}">Διαγραφή</button>
+      </div>`
+    ).join("")||'<div class="empty">Δεν υπάρχουν κινήσεις.</div>';
+
+    $("goalList").innerHTML=goals.map(g=>{
+      const pct=Math.min(100,Math.max(0,
+        Number(g.target_amount)
+        ?Number(g.saved_amount)/Number(g.target_amount)*100
+        :0
+      ));
+
+      return `<div class="item">
+        <div style="flex:1">
+          <b>${safeText(g.title)}</b>
+          <small>${euro(g.saved_amount)} από ${euro(g.target_amount)}${g.target_date?" · "+safeText(g.target_date):""}</small>
+          <div style="height:7px;background:#e7efec;border-radius:8px;margin-top:8px">
+            <div style="height:7px;width:${pct}%;background:var(--green);border-radius:8px"></div>
+          </div>
+        </div>
+        <button class="ghost small" data-delete-goal="${g.id}">Διαγραφή</button>
+      </div>`;
+    }).join("")||'<div class="empty">Δεν έχεις δημιουργήσει στόχους.</div>';
+
+    const cycles={
+      monthly:"Μηνιαία",
+      yearly:"Ετήσια",
+      weekly:"Εβδομαδιαία"
+    };
+
+    $("subList").innerHTML=subscriptions.map(s=>
+      `<div class="item">
+        <div>
+          <b>${safeText(s.title)}</b>
+          <small>${cycles[s.billing_cycle]||safeText(s.billing_cycle)} · Επόμενη πληρωμή: ${safeText(s.next_payment_date||"—")}</small>
+        </div>
+        <div style="text-align:right">
+          <b>${euro(s.amount)}</b><br>
+          <button class="ghost small" data-delete-sub="${s.id}">Διαγραφή</button>
+        </div>
+      </div>`
+    ).join("")||'<div class="empty">Δεν έχεις καταχωρίσει συνδρομές.</div>';
+  }
+
+  async function insertRow(table,row){
+    const {error}=await db.from(table).insert({
+      ...row,
+      user_id:currentUser.id
+    });
+
+    if(error)throw error;
+    await loadAll();
+  }
+
+  $("addTxBtn").addEventListener("click",async()=>{
+    const title=$("txTitle").value.trim();
+    const amount=Number($("txAmount").value);
+
+    if(!title||!Number.isFinite(amount)||amount<=0||!$("txDate").value){
+      showNotice("Συμπλήρωσε περιγραφή, έγκυρο ποσό και ημερομηνία.",true);
+      return;
+    }
+
+    try{
+      await insertRow("transactions",{
+        title,
+        amount,
+        type:$("txType").value,
+        category:$("txCategory").value,
+        transaction_date:$("txDate").value
+      });
+
+      $("txTitle").value="";
+      $("txAmount").value="";
+      showNotice("Η κίνηση αποθηκεύτηκε.");
+
+    }catch(e){
+      showNotice("Σφάλμα αποθήκευσης: "+e.message,true);
+    }
+  });
+
+  $("addGoalBtn").addEventListener("click",async()=>{
+    const title=$("goalTitle").value.trim();
+    const target=Number($("goalTarget").value);
+    const saved=Number($("goalSaved").value||0);
+
+    if(!title||!Number.isFinite(target)||target<=0||!Number.isFinite(saved)||saved<0){
+      showNotice("Έλεγξε το όνομα και τα ποσά του στόχου.",true);
+      return;
+    }
+
+    try{
+      await insertRow("goals",{
+        title,
+        target_amount:target,
+        saved_amount:saved,
+        target_date:$("goalDate").value||null
+      });
+
+      $("goalTitle").value="";
+      $("goalTarget").value="";
+      $("goalSaved").value="0";
+      showNotice("Ο στόχος αποθηκεύτηκε.");
+
+    }catch(e){
+      showNotice("Σφάλμα αποθήκευσης: "+e.message,true);
+    }
+  });
+
+  $("addSubBtn").addEventListener("click",async()=>{
+    const title=$("subTitle").value.trim();
+    const amount=Number($("subAmount").value);
+    const date=$("subDate").value;
+
+    if(!title||!Number.isFinite(amount)||amount<=0||!date){
+      showNotice("Συμπλήρωσε υπηρεσία, ποσό και ημερομηνία.",true);
+      return;
+    }
+
+    try{
+      await insertRow("subscriptions",{
+        title,
+        amount,
+        billing_cycle:$("subCycle").value,
+        next_payment_date:date
+      });
+
+      $("subTitle").value="";
+      $("subAmount").value="";
+      showNotice("Η συνδρομή αποθηκεύτηκε.");
+
+    }catch(e){
+      showNotice("Σφάλμα αποθήκευσης: "+e.message,true);
+    }
+  });
+
+  document.addEventListener("click",async e=>{
+    const b=e.target.closest(
+      "button[data-delete-tx],button[data-delete-goal],button[data-delete-sub]"
+    );
+
+    if(!b||!currentUser)return;
+
+    const [attr,id]=Object.entries(b.dataset)[0];
+
+    const table=
+      attr==="deleteTx"?"transactions":
+      attr==="deleteGoal"?"goals":
+      "subscriptions";
+
+    if(!confirm("Να διαγραφεί αυτή η καταχώριση;"))return;
+
+    const {error}=await db.from(table).delete().eq("id",id);
+
+    if(error){
+      showNotice("Δεν έγινε η διαγραφή: "+error.message,true);
+    }else{
+      await loadAll();
+    }
+  });
+
+  document.querySelectorAll("[data-tab]").forEach(btn=>
+    btn.addEventListener("click",()=>{
+      document.querySelectorAll("[data-tab]").forEach(x=>
+        x.classList.toggle("active",x===btn)
+      );
+
+      ["dashboard","transactions","goals","subscriptions","assistant"].forEach(tab=>
+        $("tab-"+tab).classList.toggle("hidden",tab!==btn.dataset.tab)
+      );
+    })
+  );
+
+  $("signUpBtn").addEventListener("click",signUp);
+  $("signInBtn").addEventListener("click",signIn);
+  $("resetBtn").addEventListener("click",resetPassword);
+  $("signOutBtn").addEventListener("click",signOut);
+
+  db.auth.onAuthStateChange((_event,session)=>{
+    if(session?.user)showSignedIn(session.user);
+    else showSignedOut();
+  });
+
+  db.auth.getSession().then(({data,error})=>{
+    if(error)showNotice(error.message,true);
+
+    if(data.session?.user)showSignedIn(data.session.user);
+    else showSignedOut();
+  });
+
+  if("serviceWorker" in navigator){
+    window.addEventListener("load",()=>{
+      navigator.serviceWorker.register("./sw.js").catch(()=>{});
+    });
+  }
+})();
+</script>
+</body>
+</html>
